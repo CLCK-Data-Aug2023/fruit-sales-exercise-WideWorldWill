@@ -1,10 +1,13 @@
-import csv
+import pandas as pd
 
-filename = "fruit.csv"
+fruitinfo = {
+    'Apples': [35, 41],
+    'Bananas': [21, 34]
+}
 
-with open(filename, "w", newline="") as csvfile:
-  writer = csv.writer(csvfile, dialect="excel")
+df = pd.DataFrame(fruitinfo, index=['2017 Sales', '2018 Sales'])
 
-  writer.writerow(["", "Apples", "Bananas"])
-  writer.writerow(["2017 Sales", "35", "21"])
-  writer.writerow(["2018 Sales", "41", "34"])
+
+df.to_csv('fruit.csv')
+
+print("Data has been written to 'fruit.csv'")
